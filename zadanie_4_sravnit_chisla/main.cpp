@@ -39,12 +39,15 @@ std::string names_2[ 10 ] = {
 
 std::string function_int_to_name( int num ) 
 {
-    if ( num < 0 || num >= 100 )
+    if ( num < -99 || num >= 100 )
         return "error";
 
     if ( num == 0 )
         return "zero";
 
+    if ( num < 0 )
+        return "minus " + function_int_to_name( -num );
+    
     if ( num < 20 )
         return names_1[ num ];
     else
@@ -72,10 +75,9 @@ int main( )
 
     std::cout << std::endl;
 
-    if ( one_chislo >= 100 || one_chislo < 0 || two_chislo >= 100 || two_chislo < 0 )
+    if ( one_chislo >= 100 || one_chislo < -99 || two_chislo >= 100 || two_chislo < -99 )
     {
         std::cout << "Error! One of the numbers is out of connection!" << std::endl;
-
         return 1;
     }
 
